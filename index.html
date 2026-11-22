@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en-ZA">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+<title>Ugubhela Simon — your IT FAST BRO | PixelProTech</title>
+<meta name="description" content="Ugubhela Simon by PixelProTech Solutions. 34 guided fixes for PC, Wi-Fi and phone, a real device scan, PDF to text and tasks. Works offline. No ads, no upload.">
+<meta name="theme-color" content="#050507">
+<meta name="color-scheme" content="dark">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Simon">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.png" type="image/png" sizes="48x48">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<canvas id="bg" aria-hidden="true"></canvas>
+
+<div class="app" id="app">
+  <header class="appbar">
+    <span class="mark" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><g fill="currentColor"><rect x="14" y="2" width="4" height="4" rx="1"/><rect x="18" y="2" width="4" height="4" rx="1"/><rect x="10" y="6" width="4" height="4" rx="1"/><rect x="14" y="6" width="4" height="4" rx="1"/><rect x="6" y="10" width="4" height="4" rx="1"/><rect x="10" y="10" width="4" height="4" rx="1"/><rect x="14" y="10" width="4" height="4" rx="1"/><rect x="2" y="14" width="4" height="4" rx="1"/><rect x="6" y="14" width="4" height="4" rx="1"/><rect x="10" y="14" width="4" height="4" rx="1"/><rect x="10" y="18" width="4" height="4" rx="1"/><rect x="6" y="22" width="4" height="2" rx="1"/></g></svg>
+    </span>
+    <div class="titles">
+      <h1>Ugubhela Simon</h1>
+      <p>your IT FAST BRO</p>
+    </div>
+    <span class="net-chip" id="netChip" role="status"><i></i><b id="netTxt">offline-ready</b></span>
+    <button class="tonal rip" id="installTop" type="button" hidden>Install</button>
+  </header>
+
+  <nav class="nav" id="nav" aria-label="Main">
+    <button class="nav-i on" data-go="chat" type="button" aria-label="Simon chat"><span class="pill rip"><svg viewBox="0 0 24 24"><path d="M4 5.5h16v10.5H9.5L5 20v-4H4z"/></svg></span><em>Simon</em></button>
+    <button class="nav-i" data-go="fix" type="button" aria-label="Fix lane"><span class="pill rip"><svg viewBox="0 0 24 24"><path d="M13.5 2.5 5 13.5h6l-1 8 9-11.5h-6z"/></svg></span><em>Fix</em></button>
+    <button class="nav-i" data-go="scan" type="button" aria-label="Pocket scan"><span class="pill rip"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3.2"/><path d="M12 12 18.2 5.8"/></svg></span><em>Scan</em></button>
+    <button class="nav-i" data-go="tasks" type="button" aria-label="Tasks"><span class="pill rip"><svg viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="4" height="4" rx="1"/><rect x="3.5" y="14.5" width="4" height="4" rx="1"/><path d="M11 6.5h9.5M11 16.5h9.5"/></svg><u id="taskBadge" hidden>0</u></span><em>Tasks</em></button>
+    <button class="nav-i" data-go="tools" type="button" aria-label="Tools"><span class="pill rip"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="12" rx="2.5"/><path d="M9 8V5.5h6V8M3 13.5h18"/></svg></span><em>Tools</em></button>
+  </nav>
+
+  <main class="stage" id="stage">
+
+    <!-- ============ SIMON CHAT ============ -->
+    <section class="view chat on" id="v-chat" aria-label="Chat with Simon">
+      <div class="log" id="log" aria-live="polite">
+        <div class="hero" id="hero">
+          <div class="hero-txt">
+            <p class="eyebrow">PIXELPROTECH · OFFLINE</p>
+            <h2>Fast fixes.<br><span>Even with no signal.</span></h2>
+            <p class="sub" id="heroSub">Guided fixes, a real device scan, PDF to text and tasks.</p>
+          </div>
+          <div class="cube-stage" aria-hidden="true">
+            <div class="bob"><div class="cube" id="cube"></div><div class="orbit" id="orbit"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="dock">
+        <div class="quick" id="quick"></div>
+        <form class="composer" id="form" autocomplete="off">
+          <input id="msg" type="text" maxlength="400" placeholder="Describe a problem, or say: add task buy toner friday" aria-label="Type to Simon" enterkeyhint="send">
+          <button class="send rip" type="submit" aria-label="Send"><svg viewBox="0 0 24 24"><path d="M4 12 20 4l-4.5 16-3.5-6.5z"/></svg></button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ============ FIX LANE ============ -->
+    <section class="view" id="v-fix" aria-label="Fix lane">
+      <div class="pad">
+        <div class="searchbar">
+          <svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>
+          <input id="fixQ" type="search" placeholder="What is wrong? e.g. no internet" aria-label="Describe the problem" autocomplete="off" enterkeyhint="search">
+        </div>
+        <div class="stats" id="fixStats"></div>
+        <div class="chips" id="fixCats" role="tablist" aria-label="Categories"></div>
+        <div id="caseStrip"></div>
+        <div id="fixList" class="fixlist"></div>
+      </div>
+    </section>
+
+    <!-- ============ POCKET SCAN ============ -->
+    <section class="view" id="v-scan" aria-label="Pocket scan">
+      <div class="pad">
+        <div class="scan-hero">
+          <div class="rings" aria-hidden="true"><i></i><i></i><i></i><span class="sweep"></span></div>
+          <div class="ring-score">
+            <svg viewBox="0 0 120 120" aria-hidden="true"><circle class="trk" cx="60" cy="60" r="52"/><circle class="val" id="scoreArc" cx="60" cy="60" r="52"/></svg>
+            <div class="num"><b id="scoreNum">--</b><small id="scoreLbl">not scanned</small></div>
+          </div>
+        </div>
+        <p class="lead" id="scanLead">A real check of the device you're holding: network, clock, smoothness, battery and hardware. Nothing is faked. If a browser can't measure something, it says so.</p>
+        <label class="switch"><input type="checkbox" id="scanSpeed"><span class="sw"></span><span>Include speed test <small>(uses about 1 MB of data)</small></span></label>
+        <button class="fab-wide rip" id="scanGo" type="button"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3.2"/><path d="M12 12 18.2 5.8"/></svg><span id="scanGoTxt">Run Pocket Scan</span></button>
+        <ul class="rows" id="scanRows"></ul>
+        <div class="row-actions" id="scanActions" hidden>
+          <button class="tonal rip" id="scanCopy" type="button">Copy report</button>
+          <button class="tonal rip" id="scanWA" type="button">Send to PixelProTech</button>
+          <button class="tonal rip" id="scanShare" type="button" hidden>Share</button>
+        </div>
+        <p class="note" id="scanLast"></p>
+      </div>
+    </section>
+
+    <!-- ============ TASKS ============ -->
+    <section class="view" id="v-tasks" aria-label="Tasks">
+      <div class="pad">
+        <div class="sect-head"><h3>Tasks</h3><span id="taskCount" class="count"></span></div>
+        <div class="chips" id="taskTabs" role="tablist">
+          <button class="chip on rip" data-view="all" type="button">All</button>
+          <button class="chip rip" data-view="today" type="button">Today</button>
+          <button class="chip rip" data-view="overdue" type="button">Overdue</button>
+        </div>
+        <ul id="taskList" class="tasklist"></ul>
+        <p class="note">Saved on this device only. Use Tools, Backup to keep a copy.</p>
+      </div>
+      <button class="fab rip" id="taskFab" type="button" aria-label="Add task"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg><span>New task</span></button>
+    </section>
+
+    <!-- ============ TOOLS ============ -->
+    <section class="view" id="v-tools" aria-label="Tools">
+      <div class="pad">
+        <div class="card">
+          <h3>PDF to text</h3>
+          <p class="note">Drop a PDF or choose one. It never leaves this device. Works offline.</p>
+          <div id="pdfHost"></div>
+        </div>
+
+        <div class="card" id="installCard">
+          <h3>Install Simon</h3>
+          <p class="note" id="installTxt">Add Simon to your home screen or desktop. He opens like an app and works with no signal.</p>
+          <button class="primary rip" id="installBtn" type="button" hidden>Install app</button>
+        </div>
+
+        <div class="card">
+          <h3>Teach Simon</h3>
+          <p class="note">Things he couldn't answer are kept here, on your device. Sending them to the team is your choice.</p>
+          <ul id="unknownList" class="unknown"></ul>
+          <div class="row-actions">
+            <button class="tonal rip" id="sendUnknown" type="button">Send on WhatsApp</button>
+            <button class="text rip" id="clearUnknown" type="button">Clear</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Backup</h3>
+          <p class="note">Tasks, cases and scan history live only on this device. Keep a copy.</p>
+          <div class="row-actions">
+            <button class="tonal rip" id="bkExport" type="button">Export backup</button>
+            <label class="tonal rip filebtn">Restore<input type="file" id="bkImport" accept="application/json,.json"></label>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Talk to a human</h3>
+          <div class="row-actions">
+            <button class="primary rip" id="ctWA" type="button">WhatsApp</button>
+            <a class="tonal rip" href="tel:0651971461">Call 065 197 1461</a>
+            <a class="tonal rip" href="mailto:pixelprotechsolutions@proton.me">Email</a>
+          </div>
+          <p class="note">On-site diagnostic R350 per visit (home), R650 business call-out. Gauteng: Johannesburg, Pretoria, Centurion.</p>
+        </div>
+
+        <p class="foot">Simon is a rule-based helper, not an AI. He only knows what is built into him, and says so when he doesn't.<br>PixelProTech Solutions (Pty) Ltd · Reg. 2026/622131/07 · Centurion, Gauteng</p>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div class="scrim" id="scrim"></div>
+
+<!-- Fix runner sheet -->
+<aside class="sheet" id="fixSheet" role="dialog" aria-modal="true" aria-label="Guided fix" tabindex="-1">
+  <div class="grab"></div>
+  <div class="sheet-in" id="fixBody"></div>
+</aside>
+
+<!-- Task sheet -->
+<aside class="sheet" id="taskSheet" role="dialog" aria-modal="true" aria-label="New task" tabindex="-1">
+  <div class="grab"></div>
+  <form class="sheet-in" id="taskForm" autocomplete="off">
+    <h3 id="taskSheetTitle">New task</h3>
+    <label class="field"><span>What needs doing?</span><input id="taskText" type="text" maxlength="160" placeholder="e.g. Call the school about printers"></label>
+    <div class="field"><span>When</span>
+      <div class="chips" id="dueChips">
+        <button type="button" class="chip rip" data-due="today">Today</button>
+        <button type="button" class="chip rip" data-due="tomorrow">Tomorrow</button>
+        <button type="button" class="chip rip" data-due="week">Next week</button>
+        <button type="button" class="chip on rip" data-due="none">No date</button>
+      </div>
+      <input id="taskDue" type="date" aria-label="Pick a date">
+    </div>
+    <div class="sheet-btns"><button type="button" class="text rip" id="taskCancel">Cancel</button><button type="submit" class="primary rip">Save task</button></div>
+  </form>
+</aside>
+
+<div class="snack" id="snack" role="status" aria-live="polite"><span id="snackTxt"></span><button type="button" id="snackBtn" hidden></button></div>
+
+<script src="simon-brain.js"></script>
+<script src="fixes.js"></script>
+<script src="scan.js"></script>
+<script src="bg.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
